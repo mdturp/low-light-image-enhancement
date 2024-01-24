@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "jimp": "^0.22.10",
     "onnxruntime-web": "^1.16.3",
     "vite-plugin-top-level-await": "^1.4.1",
     "vue": "^3.3.11",
