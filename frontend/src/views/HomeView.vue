@@ -7,6 +7,7 @@ import IconDownload from '@/components/icons/IconDownload.vue'
 import IconTrash from '@/components/icons/IconTrash.vue'
 import IconEye from '@/components/icons/IconEye.vue'
 import IconEyeClosed from '@/components/icons/IconEyeClosed.vue'
+import IconInfo from '@/components/icons/IconInfo.vue'
 import HeroSection from '@/components/HeroSection.vue'
 
 import { loadImage, getImageData, normalizeAndTranspose, transformAndTranspose } from '@/utils.js'
@@ -87,6 +88,12 @@ function download() {
   link.click()
 }
 
+function imageClicked(src) {
+  let base_url = import.meta.env.BASE_URL
+  uploadedImageSrc.value = base_url + src
+  activeImageSrc.value = base_url + src
+}
+
 onMounted(async () => {
   const executionProviders = ['wasm']
   session = await ort.InferenceSession.create('./model.onnx', { executionProviders })
@@ -94,7 +101,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="h-screen w-full flex flex-col justify-between items-center">
+  <main class="h-screen w-full flex flex-col justify-between items-center overflow-scroll">
     <div class="flex flex-col justify-start items-center">
       <HeroSection>
         <template v-slot:title> Transform Night into Light </template>
@@ -130,12 +137,45 @@ onMounted(async () => {
           <IconTrash />
         </button>
       </div>
+      <div
+        v-if="!activeImageSrc"
+        class="py-8 px-4 mx-auto max-w-screen-xl text-center flex flex-col"
+      >
+        <p class="mb-0 sm:mb-4 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48">
+          Don't have an image click on one of the below to try it out. <br />
+          <span class="text-xs"
+            >Images taken from
+            <a href="https://commons.wikimedia.org/" target="_blank" class="hover:underline"
+              >Wikimedia Commons</a
+            >.</span
+          >
+        </p>
+        <div class="mt-3 flex flex-col sm:flex-row justify-center items-center">
+          <div class="relative">
+            <img
+              class="max-w-[150px] max-h-[150px] mx-3 mt-3 sm:mt-0 cursor-pointer rounded-lg"
+              src="/images/chinatown.jpg"
+              @click="imageClicked('/images/chinatown.jpg')"
+            />
+          </div>
+          <img
+            class="max-w-[150px] max-h-[150px] mx-3 mt-3 sm:mt-0 cursor-pointer rounded-lg"
+            src="/images/livingRoom.jpg"
+            @click="imageClicked('/images/livingRoom.jpg')"
+          />
+          <img
+            class="max-w-[150px] max-h-[150px] mx-3 mt-3 sm:mt-0 cursor-pointer rounded-lg"
+            src="/images/athens.jpg"
+            @click="imageClicked('/images/athens.jpg')"
+          />
+        </div>
+      </div>
       <img
-        class="max-w-[330px] lg:max-w-[500px] max-h-[400px] lg:max-h-[500px]"
+        class="max-w-[330px] lg:max-w-[400px] max-h-[400px] lg:max-h-[400px]"
         v-if="activeImageSrc"
         :src="activeImageSrc"
       />
     </div>
-    <FooterBar class="w-full"></FooterBar>
+    <FooterBar class=" w-full -z-10"></FooterBar>
   </main>
 </template>
