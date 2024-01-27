@@ -11,11 +11,26 @@ If you want to know more about the processes and steps involved in how to build 
 
 ## Installation and Usage
 
+### Project Setup for the model conversion
+
+#### Install python dependencies
+
+```sh
+cd model
+pip install -r requirements.txt
+```
+
+#### Convert the model to ONNX
+
+```sh
+python transform_to_onnx_and_test.py
+```
 
 
 ### Project Setup for the frontend
 
 ```sh
+cd frontend
 npm install
 ```
 
@@ -46,4 +61,4 @@ https://github.com/mdturp/low-light-image-enhancement/assets/26228055/96b65056-a
 
 ## Acknowledgements
 
-The model code and weights are based on the [Pytorch implementation](https://github.com/vis-opt-group/SCI/) of the the following [CVPR paper](https://openaccess.thecvf.com/content/CVPR2022/html/Ma_Toward_Fast_Flexible_and_Robust_Low-Light_Image_Enhancement_CVPR_2022_paper.html).
+The model code and weights are based on the [Pytorch implementation](https://github.com/vis-opt-group/SCI/) of the following [CVPR paper](https://openaccess.thecvf.com/content/CVPR2022/html/Ma_Toward_Fast_Flexible_and_Robust_Low-Light_Image_Enhancement_CVPR_2022_paper.html).
