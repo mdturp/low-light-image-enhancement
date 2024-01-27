@@ -1,6 +1,6 @@
 # Low Light Image Enhancement
 
-A simple VUE.js application that enhances low light images privately locally in the browser. 
+A simple VUE.js application that enhances low light images privately locally in the browser ([demo](https://mdturp.github.io/low-light-image-enhancement/)). 
 
 <img width="482" alt="image" src="https://github.com/mdturp/low-light-image-enhancement/assets/26228055/00770ca9-71b0-4fc3-8d00-a1a9a61f5ad0">
 
