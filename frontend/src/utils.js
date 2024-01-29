@@ -33,7 +33,6 @@ export function normalizeAndTranspose(imageData, width, height) {
   float32Data.set(rArray)
   float32Data.set(gArray, rArray.length)
   float32Data.set(bArray, rArray.length + gArray.length)
-  console.log(float32Data)
   return float32Data
 }
 
